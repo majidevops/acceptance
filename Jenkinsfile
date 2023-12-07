@@ -1,9 +1,7 @@
 pipeline {
     agent any
     
-}
-      
-      stages {
+        stages {
         
         
 stage("Package") {
