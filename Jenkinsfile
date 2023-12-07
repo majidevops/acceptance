@@ -23,12 +23,10 @@ sh "docker push localhost:5000/calculator"
  }
         
     }
-    post {
-always {
-mail to: 'majidlearning7@gmail.com',
-subject: "Cher lion Votre compilation est terminée: ${currentBuild.fullDisplayName}",
-body: " Votre build est accompli, Veuilez vérifier: ${env.BUILD_URL}"
-}
+    stage("Déploiement sur staging") {
+    steps {
+        sh "docker run -d --rm -p 8765:8080 --name calculator localhost:5000/calculator"
+    }
 }
    
   }  
